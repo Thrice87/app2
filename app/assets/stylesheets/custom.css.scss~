@@ -2,6 +2,8 @@
 
 /* universal */
 
+$greyMediumLight : #eaeaea;
+
 html {
 	overflow-y : scroll;
 }
@@ -44,7 +46,6 @@ h2 {
 	margin-bottom : 30px;
 	text-align : center;
 	font-weight : normal;
-	color : #999;
 }
 
 p { 
@@ -75,16 +76,14 @@ p {
 footer {
 	margin-top : 45px;
 	padding-top : 5px;
-	border-top : 1px solid #eaeaea;
-	color : #999;
-}
-
-footer a {
-	color : #555;
-}
-
-footer a:hover {
-	color : #222;
+	border-top : 1px solid $greyMediumLight;
+	color : $grayLight;
+	a {
+		color : #555;
+		&:hover {
+			color : #222;
+		}
+	}	
 }
 
 footer small {
@@ -94,10 +93,8 @@ footer small {
 footer ul {
 	float : right;
 	list-style : none;
+	li {
+		float : left;
+		margin-left : 10px;
+	}
 }
-
-footer ul li {
-	float : left;
-	margin-left : 10px;
-}
-
