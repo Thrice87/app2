@@ -81,7 +81,7 @@ footer {
 	a {
 		color : #555;
 		&:hover {
-			color : #222;
+			color : $grayDarker;
 		}
 	}	
 }
