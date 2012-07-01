@@ -15,14 +15,14 @@ class UsersController < ApplicationController
 
   def following
     @title = "Following"
-    @user = User.find(params[:find])
+    @user = User.find(params[:id])
     @users = @user.followed_users.paginate(:page => params[:page])
     render 'show_follow'
   end
 
   def followers
     @title = "Followers"
-    @user = User.find(params[:find])
+    @user = User.find(params[:id])
     @users = @user.followers.paginate(:page => params[:page])
     render 'show_follow'
   end
@@ -33,8 +33,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    if @user.save
-      sign_in @user
+    if @user.update_attribute(:username, @user.username.insert(0,"@")) and @user.save	
+      sign_in @user	
       flash[:success] = "Welcome to the Sample App!"
       redirect_to @user
     else
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update_attributes(params[:user])
+    if @user.update_attributes(params[:user]) and @user.update_attribute(:username, @user.username.insert(0, "@"))
       flash[:success] = "Profile updated"
       sign_in @user
       redirect_to @user
