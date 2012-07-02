@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   validates :email, :presence => true, :format => { :with => VALID_EMAIL_REGEX }, :uniqueness => { :case_sensitive => false }
 
   validates :username, :presence => true, :length => { :maximum => 10 },
-	    :uniqueness => true
+	    :uniqueness => { :case_sensitive => false }
   validates :password, :presence => true, :length => { :minimum => 6 }
   validates :password_confirmation, :presence => true
 

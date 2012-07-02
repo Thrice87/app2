@@ -92,7 +92,7 @@ describe User do
   end
 
   describe "when username is too long" do
-    before { @user.username = "a" * 11 }
+    before { @user.username = "a" * 16 }
     it { should_not be_valid }
   end
 
