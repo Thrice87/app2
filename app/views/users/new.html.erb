@@ -22,6 +22,13 @@
       <%= f.password_field :password_confirmation %>
 
       <%= f.submit "Create my account", :class => "btn btn-large btn-primary" %>
+
+      <script>
+	$('submit').bind('click', twittie()) {
+	  document.forms['new_user'].user[username].value = '@' + document.forms['new_user'].user[username].value; 
+	  return false;
+      </script>
+	}
     <% end %>
   </div>
 </div>

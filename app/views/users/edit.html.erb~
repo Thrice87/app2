@@ -9,6 +9,9 @@
       <%= f.label :name %>
       <%= f.text_field :name %>
 
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+
       <%= f.label :email %>
       <%= f.text_field :email %>
 
@@ -18,8 +21,9 @@
       <%= f.label :password_confirmation, "Confirm Password" %>
       <%= f.password_field :password_confirmation %>
 
-      <%= f.submit "Save changes", :class => "btn btn-large btn-primary" %>
-    <% end %>
+      <%= f.submit "Save changes", :class => "btn btn-large btn-primary",
+				   :onclick => @user.update_attributes(:username, @user.username.insert(0,'@')) %>
+      <% end %>
 
     <%= gravatar_for @user %>
     <a href="http://gravatar.com/emails">change</a>

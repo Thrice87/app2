@@ -33,7 +33,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    if @user.save	
+    if @user.save
+      @user.update_attribute(:username, "@" + @user.username)	
       sign_in @user	
       flash[:success] = "Welcome to the Sample App!"
       redirect_to @user
@@ -48,6 +49,7 @@ class UsersController < ApplicationController
   def update
     if @user.update_attributes(params[:user])
       flash[:success] = "Profile updated"
+      @user.update_attribute(:username, "@" + @user.username)
       sign_in @user
       redirect_to @user
     else

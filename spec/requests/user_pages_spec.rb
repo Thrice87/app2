@@ -105,6 +105,7 @@ describe "User pages" do
 
       describe "after saving the user" do
 	before { click_button submit }
+	specify { User.last.reload.username.should == "@" + "foobar" } 
         it { should have_link('Sign out') }
       end
 

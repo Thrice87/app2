@@ -10,9 +10,8 @@
       <%= f.text_field :name %>
 
       <%= f.label :username %>
-      <%= f.text_field :username,
-		       :label => "@" %>
-
+      <%= f.text_field :username %>
+		       
       <%= f.label :email %>
       <%= f.text_field :email %>
 

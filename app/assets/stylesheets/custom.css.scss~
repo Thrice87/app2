@@ -136,7 +136,13 @@ aside {
   	        letter-spacing: -1px;
 	        margin-bottom: 3px;
     	}
+
+	h2 {
+		text-align: left;
+  	        letter-spacing: -1px;
+	        margin-bottom: 3px;
   	}
+	}
 }
 
 .stats {
