@@ -8,6 +8,7 @@ describe Micropost do
 
   it { should respond_to(:content) }
   it { should respond_to(:user_id) }
+  it { should respond_to(:mentioned_id) }
 
   it { should be_valid }
 
@@ -37,5 +38,10 @@ describe Micropost do
   describe "with content that is too long" do
     before { @micropost.content = "a" * 141 }
     it { should_not be_valid }
+  end
+
+  describe "with username in the content" do
+    before { @micropost.content = "@username" }
+    it { should be_valid }
   end
 end

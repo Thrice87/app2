@@ -5,6 +5,7 @@ describe "Micropost pages" do
   subject { page }
 
   let(:user) { FactoryGirl.create(:user) }
+  let(:user2) { FactoryGirl.create(:user) }
   before { sign_in user }
 
   describe "micropost creation" do
@@ -29,6 +30,18 @@ describe "Micropost pages" do
         expect { click_button "Post" }.should change(Micropost, :count).by(1)
       end
     end
+
+    describe "with mention of user" do
+      before { fill_in 'micropost_content', :with => "Lorem ipsum " + user2.username }
+      it "should create a micropost" do
+        expect { click_button "Post" }.should change(Micropost, :count).by(1)
+      end
+      before { FactoryGirl.create(:micropost, :user => user, :content => user2.username) }
+      it "should record the mention in the db" do
+        @micropost = Micropost.last
+        expect { @micropost.mentioned_id }.should  == user2.id
+      end
+    end
   end
 
   describe "micropost destruction" do
@@ -38,7 +51,7 @@ describe "Micropost pages" do
       before { visit root_path }
       
       it "should delete a micropost" do
-	expect { click_link "delete" }. should change(Micropost, :count).by(-1)
+ 	      expect { click_link "delete" }. should change(Micropost, :count).by(-1)
       end
     end
   end 
