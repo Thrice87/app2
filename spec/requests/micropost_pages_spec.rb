@@ -30,18 +30,6 @@ describe "Micropost pages" do
         expect { click_button "Post" }.should change(Micropost, :count).by(1)
       end
     end
-
-    describe "with mention of user" do
-      before { fill_in 'micropost_content', :with => "Lorem ipsum " + user2.username }
-      it "should create a micropost" do
-        expect { click_button "Post" }.should change(Micropost, :count).by(1)
-      end
-      before { FactoryGirl.create(:micropost, :user => user, :content => user2.username) }
-      it "should record the mention in the db" do
-        @micropost = Micropost.last
-        expect { @micropost.mentioned_id }.should  == user2.id
-      end
-    end
   end
 
   describe "micropost destruction" do

@@ -14,14 +14,13 @@ require 'spec_helper'
 describe User do
 
   before do
-    @user = User.new(:name => "Example User", :email => "user@example.com", :username => "foobar", :password => "foobar", :password_confirmation => "foobar")
+    @user = User.new(:name => "Example User", :email => "user@example.com", :password => "foobar", :password_confirmation => "foobar")
   end
 
   subject { @user }
 
   it { should respond_to(:name) }
   it { should respond_to(:email) }
-  it { should respond_to(:username) }
 
   it { should respond_to(:password_digest) }
   it { should respond_to(:password) }
@@ -81,26 +80,6 @@ describe User do
       user_with_same_email = @user.dup
       user_with_same_email.email = @user.email.upcase
       user_with_same_email.save
-    end
-
-    it { should_not be_valid }
-  end
-
-  describe "when username isn't present" do
-    before { @user.username = " " }
-    it { should_not be_valid }
-  end
-
-  describe "when username is too long" do
-    before { @user.username = "a" * 16 }
-    it { should_not be_valid }
-  end
-
-  describe "when username is already taken" do
-    before do
-      user_with_same_username = @user.dup
-      user_with_same_username.username = @user.username.upcase
-      user_with_same_username.save
     end
 
     it { should_not be_valid }
