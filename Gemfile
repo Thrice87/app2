@@ -15,6 +15,7 @@ group :development, :test do
   gem 'rspec-rails', '2.10.0'
   gem 'annotate', '~> 2.4.1.beta'
   gem 'guard-rspec', '0.5.5'
+  gem 'rb-readline'
 end
 
 group :test do
@@ -30,12 +31,12 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.2'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
+  gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '1.2.3'
 end
 
-gem 'jquery-rails', '2.0.0'
+gem 'jquery-rails', '2.0.2'
 
 group :test do
   gem 'rspec-rails', '2.10.0'
@@ -47,7 +48,7 @@ group :test do
 end
 
 group :production do
-  gem 'pg', '0.12.2'
+  gem 'pg'
 end
 
 # To use ActiveModel has_secure_password
